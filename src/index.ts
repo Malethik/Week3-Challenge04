@@ -1,16 +1,14 @@
-/* eslint-disable array-callback-return */
 /* eslint-disable no-new */
-import { Card } from './components/card';
-import { Header } from './components/header';
-import { Main } from './components/main';
-import { series } from './data';
 import './styles.css';
+import { series } from './data.ts';
+import { Header } from './components/header';
+import { Serie } from './components/serie.ts';
+import { Main } from './components/main.ts';
 
-const mainTitle = 'My Series';
+new Header('header');
+new Main('main');
+const watched = series.filter((item) => item.watched === true);
+const pending = series.filter((item) => item.watched === false);
 
-new Header('.container', mainTitle);
-new Main('.main');
-
-series.map((item) => {
-  new Card('.unWatched', item.name, item.creator, item.year, item.poster);
-});
+pending.map((item) => new Serie('.series-list--pending', item));
+watched.map((item) => new Serie('.series-list--watched', item));

@@ -13,7 +13,7 @@ export class Main extends Component {
         <section class="series-pending">
           <h3 class="subsection-title">Pending series</h3>
           <p class="info">You have 4 series pending to watch</p>
-          <ul class="series-list unWatched">
+          <ul class="series-list series-list--pending">
           </ul>
         </section>
         <section class="series-watched">
