@@ -1,14 +1,6 @@
 /* eslint-disable max-params */
 import { Component } from './component';
 
-export interface Cards {
-  selector: string;
-  title: string;
-  creator: string;
-  year: number;
-  poster: string;
-}
-
 export class Card extends Component {
   title;
   creator;
