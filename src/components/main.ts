@@ -1,10 +1,52 @@
 import { Component } from './component';
+import { series } from '../data';
+import { Serie } from './serie.ts';
 
 export class Main extends Component {
+  private series: Serie[];
   constructor(selector: string) {
     super(selector);
-    this.template = this.createTemplate();
+    this.series = series();
     this.render();
+  }
+
+  deleteSerie(id: Serie['id']) {
+    this.series = this.series.filter((item) => item.id !== id);
+  }
+
+  update(serie: Serie) {
+    this.series = this.series.map((item) =>
+      item.id === serie.id ? serie : item
+    );
+    this.element.remove();
+    this.render();
+  }
+
+  render() {
+    this.template = this.createTemplate();
+    super.render();
+    series
+      .filter((item) => item.watched === true)
+      .map(
+        (item) =>
+          new Serie(
+            '.series-list--watched',
+            item,
+            this.delete.bind(this),
+            this.update.bind(this)
+          )
+      );
+    series
+      .filter((item) => item.watched === false)
+      .map(
+        (item) =>
+          new Serie(
+            '.series-list--watched',
+            item,
+            this.delete.bind(this),
+            this.update.bind(this)
+          )
+      );
   }
 
   createTemplate() {
