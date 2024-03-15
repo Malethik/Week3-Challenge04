@@ -12,7 +12,7 @@ export class Component {
     this.element.outerHTML = this.template;
   }
 
-  unRender() {
+  delete() {
     this.element.outerHTML = '';
   }
 

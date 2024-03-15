@@ -1,31 +1,37 @@
-/* eslint-disable max-params */
 import { Component } from './component';
 
-export interface Cards {
-  selector: string;
-  title: string;
+interface Series {
+  id: number;
+  name: string;
   creator: string;
   year: number;
   poster: string;
+  watched: boolean;
+  score: number;
+  emmies: number;
 }
 
-export class Card extends Component {
-  title;
-  creator;
-  year;
-  poster;
-  constructor(
-    selector: string,
-    title: string,
-    creator: string,
-    year: number,
-    poster: string
-  ) {
+export class Serie extends Component {
+  serie: Series;
+  seriesId: number;
+  seriesName: string;
+  seriesCreator: string;
+  seriesYear: number;
+  seriesPoster: string;
+  seriesWatched: boolean;
+  seriesScore: number;
+  seriesEmmies: number;
+  constructor(selector: string, serie: Series) {
     super(selector);
-    this.title = title;
-    this.creator = creator;
-    this.year = year;
-    this.poster = poster;
+    this.serie = serie;
+    this.seriesId = this.serie.id;
+    this.seriesName = this.serie.name;
+    this.seriesCreator = this.serie.creator;
+    this.seriesYear = this.serie.year;
+    this.seriesPoster = this.serie.poster;
+    this.seriesWatched = this.serie.watched;
+    this.seriesScore = this.serie.score;
+    this.seriesEmmies = this.serie.emmies;
     this.template = this.createTemplate();
     this.render();
   }
@@ -33,10 +39,10 @@ export class Card extends Component {
   createTemplate() {
     return `<li class="serie">
               <img class="serie__poster"
-                src="${this.poster}"
-                alt="${this.title} poster" />
-              <h4 class="serie__title">${this.title} ${this.creator}</h4>
-              <p class="serie__info">${this.year}</p>
+                src="${this.serie.poster}"
+                alt="${this.serie.name} poster" />
+              <h4 class="serie__title">${this.serie.name} ${this.serie.creator}</h4>
+              <p class="serie__info">${this.serie.year}</p>
               <ul class="score">
                 <li class="score__star">
                   <i class="icon--score fas fa-star" title="1/5"></i>

@@ -1,5 +1,4 @@
-
-export const series = [
+export const series = () => [
   {
     id: 1,
     name: 'The Sopranos',
@@ -28,7 +27,7 @@ export const series = [
     creator: 'Matthew Weiner',
     year: 2007,
     poster:
-      'https://pics.filmaffinity.com/Mad_Men_Serie_de_TV-351490728-large.jpg',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQajHdPSq6fXPKJzFgVw9rZrQIipqm4OIinbb8Gn80u0CU2aOSd',
     watched: true,
     score: 5,
     emmies: 116,
